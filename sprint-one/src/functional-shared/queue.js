@@ -1,33 +1,38 @@
 var Queue = function(){
   var storage = {};
-  storage.objSize = 0;
+  storage.oldest = 0;
+  storage.newest = 0;
 
   extend(storage, queueMethods);
   return storage;
 };
 
-var extend = function(origin, extension){
-  for (var key in extension){
-    origin[key] = extension[key];
-  }
-};
 
 var queueMethods = {};
 
 queueMethods.enqueue = function(value){
-  for (var i = this.objSize; i >= 0; i--){
-    this[i + 1] = this[i];
-  }
-  this[0] = value;
-  this.objSize++;
+  var key = this.newest
+  this[key] = value;
+  this.newest++;
 };
 queueMethods.dequeue = function(){
-  var result = this[this.objSize - 1];
-  delete this[this.objSize - 1];
-  this.objSize && this.objSize--;
-  return result;
+  var result = this.oldest;
+  this[result] && this.oldest++;
+  return this[result];
 
 };
 queueMethods.size = function(){
-    return this.objSize;
+    return this.newest - this.oldest;
+};
+
+
+
+
+
+
+///~~~~~~
+var extend = function(origin, extension){
+  for (var key in extension){
+    origin[key] = extension[key];
+  }
 };
