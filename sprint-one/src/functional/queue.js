@@ -10,7 +10,7 @@ var Queue = function(){
   someInstance.enqueue = function(value){
     //place value at newest key + 1
     //increment newest key to match that value
-    storage[newest+1] = value;
+    this[newest+1] = value;
     newest++;
     
   };
@@ -21,11 +21,9 @@ var Queue = function(){
     //delete it 
     //increment oldest to the next key
 
-    var result = storage[oldest];
+    var result = this[oldest];
     oldest++;
     return result;
-
-    
   };
 
   someInstance.size = function(){
