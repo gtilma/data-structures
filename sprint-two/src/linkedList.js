@@ -5,24 +5,40 @@ var LinkedList = function(){
 
   list.addToTail = function(value){
     var node = new Node(value);
-
-    // get the node at tail 
-    // create new node 
-    // make old tail point to new node
-
-    // if only 1 node added. point head to node aswell
+    if (!list.head) {
+      list.head = node;
+      list.tail = node;
+    } else {
+      list.tail.next = node;
+      list.tail = node;
+    }
+    
   };
   //O(1)
   list.removeHead = function(){
-    //get head's next node.
-    //make head point to next node
-    //delete old head node
-
+    var old = list.head;
+    list.head = list.head.next;
+    return old.value;
   };
   //O(1)
 
   list.contains = function(target){
-
+    // check to see if list is empty 
+    if (list.head === null) {
+      return false;
+    }
+    //create searching var
+    var checker = list.head;
+    //if the checker is not null
+    
+    while (checker) {
+      if (checker.value === target) {
+        return true;
+      } else {
+        checker = checker.next;
+      }
+    }
+    return false;
   };
   //O(N)
 
