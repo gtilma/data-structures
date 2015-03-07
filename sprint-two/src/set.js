@@ -8,12 +8,10 @@ var setPrototype = {};
 
 setPrototype.add = function(item){
   this._storage[item] = item;
-
 };
 
 setPrototype.contains = function(item){
   return !!this._storage[item];
-
 };
 
 setPrototype.remove = function(item){
@@ -26,4 +24,5 @@ setPrototype.remove = function(item){
  * add : O(1)
  * contains : O(1)
  * remove : O(1)
+ * 
  */

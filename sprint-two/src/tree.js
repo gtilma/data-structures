@@ -6,7 +6,6 @@ var Tree = function(value){
   return newTree;
 };
 
-
 var treeMethods = {};
 
 treeMethods.addChild = function(value){
@@ -28,7 +27,13 @@ treeMethods.contains = function(target){
     }
   }
   return false;
+};
 
+var extend = function(object1, object2){
+  for( var key in object2){
+    object1[key] = object2[key];
+  }
+  return object1;
 };
 
 /*
@@ -38,14 +43,3 @@ treeMethods.contains = function(target){
  * contains : O(N)
  *
  */
-
-
-
-///~~~~~~~~~~~~~~
-var extend = function(object1, object2){
-  for( var key in object2){
-    object1[key] = object2[key];
-  }
-  return object1;
-}
-///~~~~~~~~~~~~~~
