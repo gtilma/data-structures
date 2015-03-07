@@ -22,9 +22,14 @@ describe('graph', function() {
 
   it('should remove nodes that were inserted', function() {
     graph.addNode('puppies');
+    graph.addNode('kittens');
+    graph.addEdge('puppies','kittens');
+    expect(graph.hasEdge('puppies','kittens')).to.equal(true);
     expect(graph.contains('puppies')).to.equal(true);
     graph.removeNode('puppies');
     expect(graph.contains('puppies')).to.equal(false);
+    expect(graph.hasEdge('kittens','puppies')).to.equal(false); 
+
   });
 
   it('should create edges between two nodes', function() {
