@@ -17,20 +17,21 @@ HashTable.prototype.insert = function(k, v){
 
 HashTable.prototype.retrieve = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  var bucket = this._storage.get(k);
+  var bucket = this._storage.get(i);
   for(var j = 0; j < bucket.length; j++){
     if(bucket[j] === k){
       return bucket[j+1];
     }
   }
-  return false;
+  return null;
 };
 
 HashTable.prototype.remove = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  var node = this._storage.get(i);
-  console.log(node);
-
+  var bucket = this._storage.get(i);
+  var index = bucket.indexOf(k)
+  this._storage.get(i).splice(index, 2);
+  
 };
 
 
